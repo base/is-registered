@@ -54,14 +54,4 @@ describe('is-registered', function() {
     });
     assert(is);
   });
-
-  it('should use a custom function on app.options', function() {
-    var base = new Base();
-    base.options.isRegistered = function(app) {
-      return app.isApp === true;
-    };
-    assert(!isRegistered(base, 'foo'));
-    base.isApp = true;
-    assert(isRegistered(base, 'foo'));
-  });
 });

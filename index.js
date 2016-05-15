@@ -15,9 +15,8 @@ module.exports = function(app, name, fn) {
     return false;
   }
 
-  fn = fn || (app.options ? app.options.validatePlugin : null);
   if (typeof fn === 'function') {
-    return fn(app);
+    return fn(app, name);
   }
 
   if (typeof name === 'undefined') {
