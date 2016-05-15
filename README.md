@@ -1,6 +1,6 @@
 # is-registered [![NPM version](https://img.shields.io/npm/v/is-registered.svg?style=flat)](https://www.npmjs.com/package/is-registered) [![NPM downloads](https://img.shields.io/npm/dm/is-registered.svg?style=flat)](https://npmjs.org/package/is-registered) [![Build Status](https://img.shields.io/travis/jonschlinkert/is-registered.svg?style=flat)](https://travis-ci.org/jonschlinkert/is-registered)
 
-Util for Base that returns true if the given value is a base instance and the plugin is already registered on the instance.
+Util for Base that optionally prevents a plugin from being registered more than once on an instance
 
 ## Install
 
@@ -12,8 +12,17 @@ $ npm install is-registered --save
 
 ## Usage
 
+* Returns `true` if `app` is a base instance and the named plugin is already registered on the instance.
+* Returns `false` if `app` is not an object
+* Supports a custom function as the third argument
+
 ```js
-var registered = require('is-registered');
+var isRegistered = require('is-registered');
+
+function plugin(app) {
+  if (isRegistered(app, 'base-foo')) return;
+  // do plugin stuff
+}
 ```
 
 ## Related projects
