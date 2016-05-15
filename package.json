@@ -1,6 +1,6 @@
 {
   "name": "is-registered",
-  "description": "Util for Base that returns true if the given value is a base instance and the plugin is already registered on the instance.",
+  "description": "Util for Base that returns true if the given value is a base instance and a named plugin is already registered on the instance.",
   "version": "0.1.0",
   "homepage": "https://github.com/jonschlinkert/is-registered",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
@@ -19,22 +19,43 @@
   "scripts": {
     "test": "mocha"
   },
-  "dependencies": {},
+  "dependencies": {
+    "debug": "^2.2.0",
+    "gulp-format-md": "^0.1.9",
+    "isobject": "^2.1.0"
+  },
   "devDependencies": {
-    "gulp-format-md": "*",
+    "base": "^0.8.1",
+    "gulp-format-md": "^0.1.9",
     "mocha": "^2.4.5"
   },
-  "keywords": [],
+  "keywords": [
+    "app",
+    "base",
+    "baseplugin",
+    "plugin",
+    "registered"
+  ],
   "verb": {
+    "toc": false,
     "layout": "default",
+    "tasks": [
+      "readme"
+    ],
     "plugins": [
       "gulp-format-md"
     ],
     "related": {
-      "list": []
+      "list": [
+        "base",
+        "base-plugins"
+      ]
     },
     "reflinks": [
       "verb"
-    ]
+    ],
+    "lint": {
+      "reflinks": true
+    }
   }
 }
