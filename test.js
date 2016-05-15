@@ -15,17 +15,17 @@ describe('is-registered', function() {
     assert.equal(typeof isRegistered, 'function');
   });
 
-  it('should return false if the value is not an object', function() {
-    assert(!isRegistered());
-    assert(!isRegistered(null));
-    assert(!isRegistered('foo'));
-    assert(!isRegistered([]));
-    assert(!isRegistered(42));
+  it('should return true if the value is not an object', function() {
+    assert(isRegistered());
+    assert(isRegistered(null));
+    assert(isRegistered('foo'));
+    assert(isRegistered([]));
+    assert(isRegistered(42));
   });
 
-  it('should return false if the value is not an instance of Base', function() {
-    assert(!isRegistered({}));
-    assert(!isRegistered({isApp: true}));
+  it('should return true if the value is not an instance of Base', function() {
+    assert(isRegistered({}));
+    assert(isRegistered({isApp: true}));
     function Foo() {};
     assert(new Foo());
   });
@@ -39,19 +39,5 @@ describe('is-registered', function() {
     var base = new Base();
     isRegistered(base, 'foo');
     assert(isRegistered(base, 'foo'));
-  });
-
-  it('should use a custom function', function() {
-    var base = new Base();
-    var is = isRegistered(base, 'foo', function(app) {
-      return app.isApp === true;
-    });
-    assert(!is);
-
-    base.isApp = true;
-    var is = isRegistered(base, 'foo', function(app) {
-      return app.isApp === true;
-    });
-    assert(is);
   });
 });

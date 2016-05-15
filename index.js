@@ -9,21 +9,20 @@
 
 var isObject = require('isobject');
 
-module.exports = function(app, name, fn) {
-  if (!isObject(app)) {
-    return false;
+module.exports = function(app, name) {
+  if (!isObject(app) || typeof name !== 'string') {
+    return true;
   }
 
-  if (typeof fn === 'function') {
-    return fn(app, name);
+  if (typeof app.isRegistered !== 'function') {
+    app.registered = {};
+    app.isRegistered = function(name) {
+      if (app.isRegistered(name)) {
+        return true;
+      }
+      app.registered[name] = true;
+      return false;
+    };
   }
-
-  if (typeof name === 'undefined') {
-    return false;
-  }
-
-  if (typeof app.isRegistered === 'function') {
-    return app.isRegistered(name);
-  }
-  return false;
+  return app.isRegistered(name);
 };
