@@ -13,8 +13,8 @@ $ npm install is-registered --save
 ## Usage
 
 * Returns `true` if `app` is a base instance and the named plugin is already registered on the instance.
-* Returns `false` if `app` is not an object
-* Supports a custom function as the third argument
+* Returns `true` if `app` is not an object
+* Returns `false` if `app` is a base instance and the plugin is not already registered on the instance
 
 ```js
 var isRegistered = require('is-registered');
