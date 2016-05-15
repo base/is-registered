@@ -8,7 +8,6 @@
 'use strict';
 
 var isObject = require('isobject');
-var debug = require('debug');
 
 module.exports = function(app, name, fn) {
   if (!isObject(app)) {
