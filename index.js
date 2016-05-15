@@ -7,16 +7,25 @@
 
 'use strict';
 
-var debug = require('debug')('is-registered');
+var isObject = require('isobject');
+var debug = require('debug');
 
-module.exports = function(config) {
-  return function(app) {
-    if (this.isRegistered('is-registered')) return;
-    debug('initializing "%s", from "%s"', __filename, module.parent.id);
+module.exports = function(app, name, fn) {
+  if (!isObject(app)) {
+    return false;
+  }
 
-    this.define('registered', function() {
-      debug('running registered');
-      
-    });
-  };
+  fn = fn || (app.options ? app.options.validatePlugin : null);
+  if (typeof fn === 'function') {
+    return fn(app);
+  }
+
+  if (typeof name === 'undefined') {
+    return false;
+  }
+
+  if (typeof app.isRegistered === 'function') {
+    return app.isRegistered(name);
+  }
+  return false;
 };
