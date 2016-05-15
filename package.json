@@ -1,7 +1,7 @@
 {
   "name": "is-registered",
-  "description": "Util for Base that returns true if the given value is a base instance and a named plugin is already registered on the instance.",
-  "version": "0.1.0",
+  "description": "Util for Base that optionally prevents a plugin from being registered more than once on an instance",
+  "version": "0.1.1",
   "homepage": "https://github.com/jonschlinkert/is-registered",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/is-registered",
