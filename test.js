@@ -4,7 +4,7 @@ require('mocha');
 var assert = require('assert');
 var isRegistered = require('./');
 var Base = require('base');
-var base, plugin;
+var base;
 
 describe('is-registered', function() {
   beforeEach(function() {

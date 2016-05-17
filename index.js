@@ -17,7 +17,7 @@ module.exports = function(app, name) {
   if (typeof app.isRegistered !== 'function') {
     app.registered = {};
     app.isRegistered = function(name) {
-      if (app.isRegistered(name)) {
+      if (app.registered.hasOwnProperty(name)) {
         return true;
       }
       app.registered[name] = true;
