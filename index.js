@@ -7,6 +7,7 @@
 
 'use strict';
 
+var define = require('define-property');
 var isObject = require('isobject');
 
 module.exports = function(app, name) {
@@ -15,14 +16,15 @@ module.exports = function(app, name) {
   }
 
   if (typeof app.isRegistered !== 'function') {
-    app.registered = {};
-    app.isRegistered = function(name) {
+    define(app, 'registered', {});
+    define(app, 'isRegistered', function(name) {
       if (app.registered.hasOwnProperty(name)) {
         return true;
       }
       app.registered[name] = true;
       return false;
-    };
+    });
   }
+
   return app.isRegistered(name);
 };
